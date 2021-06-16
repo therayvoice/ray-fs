@@ -87,6 +87,10 @@ fs
 
 20. .logDir(): To log the name of the "working-directory".
 
+21. .validFileName(fileName): To check if a file name complies with the file naming rules. (beta version)
+
+22. .validDirName(dirName): To check if a directory name complies with the naming rules. (beta version)
+
 Note: The documentation is incomplete, and will be completed soon.
 
 ## Chaining Functions

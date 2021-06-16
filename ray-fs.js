@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const rayFSVersion = "1.0.0";
+const rayFSVersion = "1.1.0";
 const rayFSAuthors = "Ray Voice and Anna Voice";
 
+/* Follow the Developers @RayShortHead @AnnaShortHead */
 /*
  * Debugging Tips:
  * 1. An Errer stating something like "output must me sting" may mean that you
@@ -157,6 +158,18 @@ module.exports = {
 				             .value)
 		        .value;
     this.value = dirList;
+    return this;
+  },
+  validFileName: function(fileName) {
+    //this method is not fully dependable, i'll use a lookahead to modify it later
+    const validFileNameRegex = /\w\.[a-zA-Z0-9]+$/;
+    this.value = validFileNameRegex.test(fileName);
+    return this;
+  },
+  validDirName: function(dirName) {
+    //this method is not fully dependable
+    const validDirNameRegex = /\w+/;
+    this.value = validDirNameRegex.test(dirName);
     return this;
   }
 }
