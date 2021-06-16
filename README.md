@@ -71,25 +71,27 @@ fs
 
 13. .writeJSON(fileURL, json): To write the `json` into the file at `fileURL`.
 
-14. .read(fileURL): To read the content of the file at `fileURL`.
+14. .read(fileURL).value: To read the content of the file at `fileURL`.
 
-15. .readJSON(fileURL): To read/import the JSON content of the file at `fileURL`.
+15. .readJSON(fileURL).value: To read/import the JSON content of the file at `fileURL`.
 
-15. .push(fileURL, content): To add the `content` below the existing content of the file at `fileURL`.
+16. .readArray(fileURL).value: To read/import the content of the file at `fileURL` as an Array of lines of content.
 
-16. .rm(url):  To delete the item at `url`.
+17. .push(fileURL, content): To add the `content` below the existing content of the file at `fileURL`.
 
-17. .cp(url, destinationURL): To copy the item at `url` to `destinationURL`.
+18. .rm(url):  To delete the item at `url`.
 
-18. .mv(url, destinationURL): To move the item at `url` to `destinationURL`.
+19. .cp(url, destinationURL): To copy the item at `url` to `destinationURL`.
 
-19. .mkdir(dirName): To create a new Directory named `dirName`.
+20. .mv(url, destinationURL): To move the item at `url` to `destinationURL`.
 
-20. .logDir(): To log the name of the "working-directory".
+21. .mkdir(dirName): To create a new Directory named `dirName`.
 
-21. .validFileName(fileName): To check if a file name complies with the file naming rules. (beta version)
+22. .logDir(): To log the name of the "working-directory".
 
-22. .validDirName(dirName): To check if a directory name complies with the naming rules. (beta version)
+23. .validFileName(fileName): To check if a file name complies with the file naming rules. (beta version)
+
+24. .validDirName(dirName): To check if a directory name complies with the naming rules. (beta version)
 
 Note: The documentation is incomplete, and will be completed soon.
 

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const rayFSVersion = "1.1.0";
+const rayFSVersion = "1.2.0";
 const rayFSAuthors = "Ray Voice and Anna Voice";
 
 /* Follow the Developers @RayShortHead @AnnaShortHead */
@@ -71,7 +71,12 @@ module.exports = {
     return this;
   },
   readJSON: function(file) {
-    this.value = JSON.parse(this.read(file));
+    this.value = JSON.parse(this.read(file).value); //added .value
+    return this;
+  },
+  readArray: function(file) {
+    this.value = this.read(file).value.split('\n');
+    return this;
   },
   push: function(file, content) {
     fs.appendFileSync(this.relPath(file).value, content);
