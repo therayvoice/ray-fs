@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const rayFSVersion = "1.2.0";
+const rayFSVersion = "1.5.0";
 const rayFSAuthors = "Ray Voice and Anna Voice";
 
 /* Follow the Developers @RayShortHead @AnnaShortHead */
@@ -25,8 +25,8 @@ const rayFSAuthors = "Ray Voice and Anna Voice";
 module.exports = {
   value: 0,
   dirInAction: '.',
-  log: function(text) {
-    console.log("ray-fs:", text);
+  log: function() {
+    console.log("ray-fs:", arguments);
     return this;
   },
   logVal: function() {
@@ -67,7 +67,8 @@ module.exports = {
     return this;
   },
   read: function(file) {
-    this.value = fs.readFileSync(this.relPath(file).value, 'utf8');
+    //this.value = fs.readFileSync(this.relPath(file).value, 'utf8'); // investigate a removal of this.relpath, the philosophy of ray-net promotes the rule-of-thumb that file paths should be resolved in the shallowest modules
+    this.value = fs.readFileSync(file, 'utf8');
     return this;
   },
   readJSON: function(file) {

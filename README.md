@@ -71,7 +71,7 @@ fs
 
 13. .writeJSON(fileURL, json): To write the `json` into the file at `fileURL`.
 
-14. .read(fileURL).value: To read the content of the file at `fileURL`.
+14. .read(fileURL).value: To read the content of the file at `fileURL`. The path used must be relative from the root directory of your project, e.g. "./README.md".
 
 15. .readJSON(fileURL).value: To read/import the JSON content of the file at `fileURL`.
 

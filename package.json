@@ -1,8 +1,8 @@
 {
   "name": "ray-fs",
-  "version": "1.2.0",
+  "version": "1.5.0",
   "description": "A library with easy to use, mind blowing file-system tools for NodeJS. Based on FS! with chainable methods, sync first approach, and amazing UX.",
-  "main": "ray-fs.js",
+  "main": "ray-fs.min.js",
   "scripts": {
     "test": "node tests/mainTest.js",
     "start": "node ."
