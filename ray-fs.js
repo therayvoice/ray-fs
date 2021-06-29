@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const rayFSVersion = "1.5.0";
+const rayFSVersion = "1.6.1";
 const rayFSAuthors = "Ray Voice and Anna Voice";
 
 /* Follow the Developers @RayShortHead @AnnaShortHead */
@@ -177,6 +177,18 @@ module.exports = {
     const validDirNameRegex = /\w+/;
     this.value = validDirNameRegex.test(dirName);
     return this;
+  },
+  stream: function(responseBody, filePath, errorCallback, sucessCallback) {
+    const fileStream = fs.createWriteStream(filePath);
+    responseBody.pipe(fileStream);
+    responseBody.on("error", ()=>{
+      console.log("Error: Stream Faild!");
+      if (errorCallback !== undefined) errorCallback();	
+    });
+    fileStream.on("finish", ()=>{
+      console.log("Stream Sucessful!");
+      if (sucessCallback !== undefined) sucessCallback();
+    });
   }
 }
 

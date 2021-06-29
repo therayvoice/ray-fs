@@ -93,6 +93,8 @@ fs
 
 24. .validDirName(dirName): To check if a directory name complies with the naming rules. (beta version)
 
+25. .stream(responseBody, filePath, errorCallback, sucessCallback): To pipe a `response.body` to a `filePath`.
+
 Note: The documentation is incomplete, and will be completed soon.
 
 ## Chaining Functions
