@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const rayFSVersion = "1.6.1";
+const rayFSVersion = "2.0.0";
 const rayFSAuthors = "Ray Voice and Anna Voice";
 
 /* Follow the Developers @RayShortHead @AnnaShortHead */
@@ -189,6 +189,30 @@ module.exports = {
       console.log("Stream Sucessful!");
       if (sucessCallback !== undefined) sucessCallback();
     });
+    // untested line below
+    return this;
+  },
+  // for new version // methods below this line aren't tested yet
+  initDir: function (dir) {
+    if (!this.exists(dir).value) this.mkdir(dir);
+    else console.log(`ray-fs log: A directory named ${dir} already Exists!`);
+    return this;
+  },
+  initDirs: function (...dirs) {
+    dirs.forEach(dir => {
+      this.initDir(dir);
+    });
+    return this;
+  },
+  initFile: function (file, content) {
+    if (typeof(content) === "object") {
+      if (!this.exists(file).value) this.writeJSON(file, content);
+    } else if (typeof(content) === "string"){
+      if (!this.exists(file).value) this.write(file, content);
+    } else {
+      console.log("ray-fs error: content nither object nor string!");
+    }
+    return this;
   }
 }
 

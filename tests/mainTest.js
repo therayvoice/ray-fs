@@ -1,6 +1,13 @@
 const fs = require('../ray-fs.js');
 
 fs
+  .initDirs("head", "tail")
+  .initFile("dogs.json", {name: "scrappy"})
+  .initFile("cats.txt", "name: jelly")
+
+
+/*
+fs
   .cd('tests')
   .logDir()
   .ls().logVal()
@@ -13,7 +20,7 @@ fs
   .mkdir('bests')
   .logDir()
   .ls().logVal()
-
+*/
 /*
   .relPath('LICENSE')
   .logVal()

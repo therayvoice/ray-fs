@@ -95,6 +95,12 @@ fs
 
 25. .stream(responseBody, filePath, errorCallback, sucessCallback): To pipe a `response.body` to a `filePath`.
 
+26. .initDir(dirName): To check if a directory exists, if no then create it.
+
+27. .initDirs(dirName1, dirName2, ...): To check if all of the provided directories exist, if any don't then create them.
+
+28. .initFile(fileName, fileContent): To check if a file exists, if no then create it, then add the provided `fileContent` to it. The `fileContent` paremeter can be passed a JSON `object` or a `String`.
+
 Note: The documentation is incomplete, and will be completed soon.
 
 ## Chaining Functions
