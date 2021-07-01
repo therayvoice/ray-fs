@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const rayFSVersion = "2.0.0";
+const rayFSVersion = "2.1.0";
 const rayFSAuthors = "Ray Voice and Anna Voice";
 
 /* Follow the Developers @RayShortHead @AnnaShortHead */
@@ -178,7 +178,26 @@ module.exports = {
     this.value = validDirNameRegex.test(dirName);
     return this;
   },
-  stream: function(responseBody, filePath, errorCallback, sucessCallback) {
+  stream: function(responseBody, filePath, errorCallback, sucessCallback) { // old name, new body
+    // To avoid Anachronisms each file is stored as a temp, when completed is renamed to the mainFile
+    const tempPath = `${filePath}.tmp`;
+    const fileStream = fs.createWriteStream(tempPath);
+    responseBody.pipe(fileStream);
+    responseBody.on("error", ()=>{
+      console.log("Error: Stream Faild!");
+      if (errorCallback !== undefined) errorCallback();	
+      this.rm(tempPath);   
+    });
+    fileStream.on("finish", ()=>{
+      console.log("Stream Sucessful!");
+      if (sucessCallback !== undefined) sucessCallback();
+      this.mv(tempPath, filePath); 
+    });
+    return this;
+  },
+  streamAsync: function(responseBody, filePath, errorCallback, sucessCallback) { // New with old `stream` body
+    // It is possible for the file stream to be incomplete after signal is lost,
+    // To avoid Anachronisms like this make sure to delete the file in the error callback
     const fileStream = fs.createWriteStream(filePath);
     responseBody.pipe(fileStream);
     responseBody.on("error", ()=>{
@@ -189,10 +208,8 @@ module.exports = {
       console.log("Stream Sucessful!");
       if (sucessCallback !== undefined) sucessCallback();
     });
-    // untested line below
     return this;
   },
-  // for new version // methods below this line aren't tested yet
   initDir: function (dir) {
     if (!this.exists(dir).value) this.mkdir(dir);
     else console.log(`ray-fs log: A directory named ${dir} already Exists!`);

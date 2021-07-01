@@ -1,6 +1,7 @@
 const fs = require('../ray-fs.js');
 
 fs
+  .initDir("face")
   .initDirs("head", "tail")
   .initFile("dogs.json", {name: "scrappy"})
   .initFile("cats.txt", "name: jelly")
