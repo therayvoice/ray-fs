@@ -86,7 +86,7 @@ module.exports = {
   rm: function(url) {
     const urlToRemove = this.relPath(url).value;
     if (this.exists(urlToRemove).value) {
-      fs.rmSync(this.relPath(url).value);
+      fs.rm(this.relPath(url).value); //removed fs.rmSync
     } else {
       this.log(`The ${url} does not exist!`);
     }
