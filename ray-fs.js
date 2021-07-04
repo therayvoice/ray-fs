@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const rayFSVersion = "2.1.7";
+const rayFSVersion = "2.1.8";
 const rayFSAuthors = "Ray Voice and Anna Voice";
 
 /* Follow the Developers @RayShortHead @AnnaShortHead */
@@ -26,7 +26,7 @@ module.exports = {
   value: 0,
   dirInAction: '.',
   log: function() {
-    console.log("ray-fs:", arguments);
+    console.log("ray-fs:", arguments); // fix this later, this is supposed to be deleted
     return this;
   },
   logVal: function() {
@@ -190,7 +190,7 @@ module.exports = {
       this.rm(tempPath);   
     });
     fileStream.on("finish", ()=>{
-      console.log("Stream Sucessful!");
+      //console.log("Stream Sucessful!");
       if (sucessCallback !== undefined) sucessCallback();
       this.mv(tempPath, filePath); 
     });
@@ -206,7 +206,7 @@ module.exports = {
       if (errorCallback !== undefined) errorCallback();	
     });
     fileStream.on("finish", ()=>{
-      console.log("Stream Sucessful!");
+      //console.log("Stream Sucessful!");
       if (sucessCallback !== undefined) sucessCallback();
     });
     return this;
