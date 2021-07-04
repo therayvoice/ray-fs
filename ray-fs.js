@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const rayFSVersion = "2.1.0";
+const rayFSVersion = "2.1.5";
 const rayFSAuthors = "Ray Voice and Anna Voice";
 
 /* Follow the Developers @RayShortHead @AnnaShortHead */
@@ -86,7 +86,8 @@ module.exports = {
   rm: function(url) {
     const urlToRemove = this.relPath(url).value;
     if (this.exists(urlToRemove).value) {
-      fs.rm(this.relPath(url).value); //removed fs.rmSync
+      if (this.isFile(url).value) fs.unlinkSync(this.relPath(url).value, ()=>{});
+      else if (this.isDir(url).value) fs.rmdir(this.relPath(url).value, ()=>{});
     } else {
       this.log(`The ${url} does not exist!`);
     }

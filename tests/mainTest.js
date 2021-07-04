@@ -1,11 +1,20 @@
 const fs = require('../ray-fs.js');
 
 fs
+  .ls()
+  .logVal()
+  .rm('tail')
+  .logVal()
+  .rm('hail')
+  .logVal()
+
+/*
+fs
   .initDir("face")
   .initDirs("head", "tail")
   .initFile("dogs.json", {name: "scrappy"})
   .initFile("cats.txt", "name: jelly")
-
+*/
 
 /*
 fs
