@@ -30,7 +30,7 @@ For example:-
 ```javascript
 fs
   .lsFile() // gets the list of Files
-  .logVal() // logs the list of Directories
+  .logVal() // logs the list of Files
 ```
 
 3. .cd(dirName): To change the "working-directory" to `dirName`. A virtual version of shell's `cd`, it does not allow a movement to directories deeper then depth=1. 
