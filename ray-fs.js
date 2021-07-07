@@ -1,7 +1,8 @@
 const fs = require('fs');
+const { sucide, murder } = require('sucide');
 const path = require('path');
 
-const rayFSVersion = "2.1.8";
+const rayFSVersion = "2.2.1";
 const rayFSAuthors = "Ray Voice and Anna Voice";
 
 /* Follow the Developers @RayShortHead @AnnaShortHead */
@@ -14,12 +15,18 @@ const rayFSAuthors = "Ray Voice and Anna Voice";
 
 /*
  * More features Comming Soon:
- * 1. .cpALL()
- * 2. .mvAll()
- * 3. .readAsArray() // reads each line as a seperate item of an Array
- * 4. .readTextAsJSON() // same as #3, but converts each line into a JSON Object prop
- * 5. forceCopy() // to overwrite if a file already exists at destinationURL
- * 6. etc.
+ *  1. .cpALL()
+ *  2. .mvAll()
+ *  3. .readAsArray() // reads each line as a seperate item of an Array
+ *  4. .readTextAsJSON() // same as #3, but converts each line into a JSON Object prop
+ *  5. .forceCopy() // to overwrite if a file already exists at destinationURL
+ *  6. .readYAML() // reads YAML as JSON
+ *  7. .writeYAML() // writes JSON as YAML
+ *  8. .updateYAML() // reads a YAML file, modifies its data using a CALLBACK, saves it in place of the original file
+ *  9. .readArray() // reads each line as a JavaScript Array
+ * 10. .writeArray() // writs a JavaScript Array to a file, each object goes on a new line
+ * 11. .updateArray() // reads an Array file, modifies its data using a CALLBACK, saves it in place of the original file
+ * etc.
  * */
 
 module.exports = {
@@ -38,7 +45,7 @@ module.exports = {
     return this;
   },
   version: function() {
-    this.value = `Version: ${rayFSVersion} developed by ${rayFSAuthors}`;
+    this.value = `Version: ${rayFSVersion} developed by $2rayFSAuthors}`;
     return this;
   },
   cd: function(dir) {
@@ -74,6 +81,12 @@ module.exports = {
   readJSON: function(file) {
     this.value = JSON.parse(this.read(file).value); //added .value
     return this;
+  },
+  updateJSON: function(file, modifiedDataCallback) {
+    murder(this.exists(file).value, "The provided JSON file doesn't exist!");
+    const json = this.readJSON(file).value;
+    if (typeof(json) !== "object") {sucide("The JSON file was corrupt!")}
+    this.writeJSON(file, modifiedDataCallback(json));
   },
   readArray: function(file) {
     this.value = this.read(file).value.split('\n');

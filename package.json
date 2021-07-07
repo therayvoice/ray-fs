@@ -1,7 +1,7 @@
 {
   "name": "ray-fs",
-  "version": "2.1.8",
-  "description": "A library with easy to use, mind blowing file-system tools for NodeJS. Based on FS! with chainable methods, sync first approach, and amazing UX.",
+  "version": "2.2.1",
+  "description": "A library with easy to use, mind blowing file-system tools for NodeJS. Based on FS! with chainable methods, sync first approach, and amazing UX. Many methods to work with JSON. Upcomming methods to work with JavaScript Arrays, YAML, HTML, etc.",
   "main": "ray-fs.min.js",
   "scripts": {
     "test": "node tests/mainTest.js",
@@ -14,16 +14,22 @@
   "keywords": [
     "fs",
     "shell",
+    "json",
+    "yaml",
+    "html",
+    "array",
     "ray",
     "anna",
     "chainable",
-    "sync",
-    "voice"
+    "sync"
   ],
   "author": "Ray Voice, Anna Voice",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Ray6464/ray-fs/issues"
   },
-  "homepage": "https://github.com/Ray6464/ray-fs#readme"
+  "homepage": "https://github.com/Ray6464/ray-fs#readme",
+  "dependencies": {
+    "sucide": "^1.0.1"
+  }
 }

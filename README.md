@@ -69,37 +69,51 @@ fs
 
 12. .write(fileURL, content): To write the `content` into the file at `fileURL`.
 
-13. .writeJSON(fileURL, json): To write the `json` into the file at `fileURL`.
+13. .read(fileURL).value: To read the content of the file at `fileURL`. The path used must be relative from the root directory of your project, e.g. "./README.md".
 
-14. .read(fileURL).value: To read the content of the file at `fileURL`. The path used must be relative from the root directory of your project, e.g. "./README.md".
+14. .writeJSON(fileURL, json): To write the `json` into the file at `fileURL`.
 
 15. .readJSON(fileURL).value: To read/import the JSON content of the file at `fileURL`.
 
-16. .readArray(fileURL).value: To read/import the content of the file at `fileURL` as an Array of lines of content.
+16. .updateJSON(file, callback): TO update the json object in a .json file. For example:
+```javascript
+const fs = require('ray-fs');
 
-17. .push(fileURL, content): To add the `content` below the existing content of the file at `fileURL`.
+const file = "june.json";
+fs
+  .updateJSON(file, (json) => {
+    json.oldProp = "replace old prop's value with new value"; 
+    json.newProp = "adds a new prop with a new value";
+    return json;	
+  });
 
-18. .rm(url):  To delete the item at `url`.
+```
 
-19. .cp(url, destinationURL): To copy the item at `url` to `destinationURL`.
+17. .readArray(fileURL).value: To read/import the content of the file at `fileURL` as an Array of lines of content.
 
-20. .mv(url, destinationURL): To move the item at `url` to `destinationURL`.
+18. .push(fileURL, content): To add the `content` below the existing content of the file at `fileURL`.
 
-21. .mkdir(dirName): To create a new Directory named `dirName`.
+19. .rm(url):  To delete the item at `url`.
 
-22. .logDir(): To log the name of the "working-directory".
+20. .cp(url, destinationURL): To copy the item at `url` to `destinationURL`.
 
-23. .validFileName(fileName): To check if a file name complies with the file naming rules. (beta version)
+21. .mv(url, destinationURL): To move the item at `url` to `destinationURL`.
 
-24. .validDirName(dirName): To check if a directory name complies with the naming rules. (beta version)
+22. .mkdir(dirName): To create a new Directory named `dirName`.
 
-25. .stream(responseBody, filePath, errorCallback, sucessCallback): To pipe a `response.body` to a `filePath`.
+23. .logDir(): To log the name of the "working-directory".
 
-26. .initDir(dirName): To check if a directory exists, if no then create it.
+24. .validFileName(fileName): To check if a file name complies with the file naming rules. (beta version)
 
-27. .initDirs(dirName1, dirName2, ...): To check if all of the provided directories exist, if any don't then create them.
+25. .validDirName(dirName): To check if a directory name complies with the naming rules. (beta version)
 
-28. .initFile(fileName, fileContent): To check if a file exists, if no then create it, then add the provided `fileContent` to it. The `fileContent` paremeter can be passed a JSON `object` or a `String`.
+26. .stream(responseBody, filePath, errorCallback, sucessCallback): To pipe a `response.body` to a `filePath`.
+
+27. .initDir(dirName): To check if a directory exists, if no then create it.
+
+28. .initDirs(dirName1, dirName2, ...): To check if all of the provided directories exist, if any don't then create them.
+
+29. .initFile(fileName, fileContent): To check if a file exists, if no then create it, then add the provided `fileContent` to it. The `fileContent` paremeter can be passed a JSON `object` or a `String`.
 
 Note: The documentation is incomplete, and will be completed soon.
 

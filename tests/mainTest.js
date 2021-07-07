@@ -1,5 +1,13 @@
-const fs = require('../ray-fs.js');
+const fs = require('../ray-fs.min.js');
 
+const file = "june.json";
+fs
+  .updateJSON(file, (json) => {
+    json.version = "v2.0.8";
+    return json;	
+  });
+
+/*
 fs
   .ls()
   .logVal()
@@ -7,6 +15,7 @@ fs
   .logVal()
   .rm('hail')
   .logVal()
+*/
 
 /*
 fs
